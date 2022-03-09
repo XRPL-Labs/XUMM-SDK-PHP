@@ -10,7 +10,7 @@ test-unit:
 
 test-acceptance:
 	docker-compose up -d
-	SLEEP 1 				# Sleep for now to ensure mock api is ready. We can do something less flaky later if needed.
+	sleep 1 				# Sleep for now to ensure mock api is ready. We can do something less flaky later if needed.
 	MODE=test ./vendor/bin/behat
 	docker-compose down
 
