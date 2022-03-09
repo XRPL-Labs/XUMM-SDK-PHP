@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+  mock-api:
+    image: synon/xumm-mock-api
+    container_name: xumm-mock-api
+    ports:
+      - '8080:3000'
+  mock-ws:
+    image: synon/php-ws-server
+    container_name: xumm-mock-ws-server
+    ports:
+      - '8081:8081'

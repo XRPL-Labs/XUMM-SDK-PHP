@@ -1,0 +1,48 @@
+Xrpl\XummSdkPhp\Payload\Payload:
+  attributes:
+    transactionBody:
+      serialized_name: txjson
+Xrpl\XummSdkPhp\Response\Pong\ApplicationDetails:
+  attributes:
+    uuidV4:
+      serialized_name: uuidv4
+    webhookUrl:
+      serialized_name: webhookurl
+Xrpl\XummSdkPhp\Response\Pong\Call:
+  attributes:
+    uuidV4:
+      serialized_name: uuidv4
+Xrpl\XummSdkPhp\Response\CuratedAssets\Currency:
+   attributes:
+     issuerId:
+       serialized_name: issuer_id
+Xrpl\XummSdkPhp\Response\Rates\CurrencyMetadata:
+   attributes:
+     isoDecimals:
+       serialized_name: isoDecimals
+Xrpl\XummSdkPhp\Response\Transaction\XrplTransaction:
+   attributes:
+     balanceChanges:
+       serialized_name: balanceChanges
+Xrpl\XummSdkPhp\Response\GetKycStatus\KycStatus:
+   attributes:
+     kycStatus:
+       serialized_name: kycStatus
+Xrpl\XummSdkPhp\Response\Rates\Rates:
+   attributes:
+     usd:
+       serialized_name: USD
+     xrp:
+       serialized_name: XRP
+Xrpl\XummSdkPhp\Response\GetPayload\Application:
+  attributes:
+    uuidV4:
+      serialized_name: uuidv4
+Xrpl\XummSdkPhp\Response\GetPayload\Payload:
+  attributes:
+    request:
+      serialized_name: request_json
+Xrpl\XummSdkPhp\Response\GetPayload\XummPayload:
+  attributes:
+    payloadMeta:
+      serialized_name: meta

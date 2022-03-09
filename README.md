@@ -1,0 +1,98 @@
+# Xumm SDK (PHP)
+
+## Requirements
+- PHP 8.1 or higher
+- [Composer](https://getcomposer.org/)
+- [Docker](https://docs.docker.com/get-docker/) and [docker compose](https://docs.docker.com/compose/install/) if you want to run acceptance tests
+
+## Installation
+For now, use composer to require a [VCS repository](https://getcomposer.org/doc/05-repositories.md#vcs), by adding a
+`repositories` section in your `composer.json`:
+```json
+{
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/paulinevos/xumm-sdk-php"
+        }
+    ],
+    "require": {
+        "xrpl/xumm-sdk-php": "dev-main"
+    }
+}
+```
+
+Once this SDK moves out of beta testing, you'll be able to run `composer require xrpl/xumm-sdk-php` as normal.
+
+## Usage
+First obtain Xumm API credentials by [registering your app](https://xumm.readme.io/docs/register-your-app).
+
+Initialize the Xumm SDK in your application: 
+```PHP
+// Either pass API credentials through the constructor 
+$sdk = new XummSdk($apiKey, $apiSecret);
+
+// Or set them as environment variables. See .env.example for the expected variable names.
+$sdk = XummSdk();
+```
+
+Each call on the SDK object will return a corresponding value object implementing the `XummResponse` interface.
+
+### Create a payload
+To create a payload, pass an instance of `Xrpl\XummSdkPhp\Payload` to `XummSdk::createPayload()`. This instance
+should hold an associative array `transactionBody`, and can hold some options and custom metadata. For more 
+elaborate documentation on how to construct a payload, please refer to 
+[the API docs](https://xumm.readme.io/docs/your-first-payload).
+
+A simple example could look like this:
+```PHP
+$sdk->createPayload(
+    new Payload(
+        transactionBody: [
+            'TransactionType' => 'Payment',
+            'Destination' => 'rPdvC6ccq8hCdPKSPJkPmyZ4Mi1oG2FFkT',
+            'Fee' => '12'
+        ],
+        customMeta: new CustomMeta(identifier: 'my-custom-identifier'),
+    )
+);
+```
+This will return an instance of `Xrpl\XummSdkPhp\Response\CreatePayload\CreatedPayload`.
+
+### Subscribe to a payload
+After you create a payload, you can pass the returned `CreatedPayload` to `XummSdk::subscribe()` to subscribe to live
+payload status changes. This returns an instance of `Xrpl\XummSdkPhp\Subscriber\Subscription`.
+
+Changes to a payload status include:
+- The payload was by a XUMM App user (web page)
+- The payload was by a XUMM App user (in the app)
+- Payload expiration updates (remaining time in seconds)
+- The payload was resolved by rejecting
+- The payload was resolved by accepting (signing)
+
+Status updates can be handled by passing a callback function as a second argument to `XummSdk::subscribe`. 
+The subscription ends by either:
+- returning non-void from the callback function, or
+- explicitly calling `Subscription::end()`.
+
+### Other methods
+The SDK also supports the XUMM API's helper methods, such as `ping`, `getCuratedAssets`, and `getRates`. Again, these
+will all return corresponding implementations of `XummResponse`.
+
+## Running tests
+Note: unless you're contributing to the SDK project itself, there will be no reason to run the tests. 
+
+To run all test suites:
+`make test`
+
+To run a specific test suite (e.g. unit, acceptance):
+```angular2html
+make test-{suite}
+
+// e.g.: make test-unit
+```
+
+| ***Note:** The acceptance test suite can be run against the 
+[XUMM mock API](https://github.com/paulinevos/xumm-mock-api). If you have Docker and docker compose, running `make test`
+will spin it up for you. Otherwise, you're free to run it yourself using node. Be sure to change the 
+`XUMM_TEST_BASE_URI` environment variable accordingly.*
