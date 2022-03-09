@@ -1,0 +1,34 @@
+{
+    "name": "xrpl/xumm-sdk-php",
+    "description": "A PHP SDK for Xumm by XRPLabs.",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Xrpl\\XummSdkPhp\\Tests\\": "tests/",
+            "Xrpl\\XummSdkPhp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Pauline Vos",
+            "email": "info@pauline-vos.nl"
+        }
+    ],
+    "prefer-stable": true,
+    "require": {
+        "php": "^8.1.0",
+        "guzzlehttp/guzzle": "^7.4",
+        "symfony/serializer": "^6.0",
+        "vlucas/phpdotenv": "^5.4",
+        "behat/behat": "^3.10",
+        "symfony/property-access": "^6.0",
+        "cboden/ratchet": "^0.4.4",
+        "ratchet/pawl": "^0.4.1",
+        "monolog/monolog": "^2.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "squizlabs/php_codesniffer": "dev-master",
+        "wyrihaximus/async-test-utilities": "^4.2"
+    }
+}

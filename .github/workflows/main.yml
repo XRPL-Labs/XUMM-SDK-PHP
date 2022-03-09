@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+env:
+  XUMM_TEST_BASE_URI: http://localhost:8080
+  XUMM_API_KEY: aaaaaaaa-bbbb-cccc-dddd-1234567890ab
+  XUMM_API_SECRET: cbbbbbbb-aaaa-cccc-dddd-1234567890ab
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      mock-api:
+        image: synon/xumm-mock-api
+        ports:
+          - '8080:3000'
+      mock-ws:
+        image: synon/php-ws-server
+        ports:
+          - '8081:8081'
+
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Setup PHP Action
+        uses: shivammathur/setup-php@2.17.1
+
+      - name: Install dependencies
+        run: composer install
+
+      - name: Run phpcs
+        run: make test-cs
+
+      - name: Run unit tests
+        run: make test-unit
+
+      - name: Run behat tests
+        run: make test-acceptance-ci
