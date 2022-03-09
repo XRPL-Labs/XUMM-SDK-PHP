@@ -1,5 +1,3 @@
-SHELL := /bin/bash
-
 test:
 	@make test-cs
 	@make test-unit
@@ -7,6 +5,9 @@ test:
 
 test-unit:
 	./vendor/bin/phpunit tests
+
+test-acceptance-ci:
+	MODE=test ./vendor/bin/behat
 
 test-acceptance:
 	docker-compose up -d
