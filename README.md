@@ -1,3 +1,6 @@
+![main workflow](https://github.com/XRPL-Labs/XUMM-SDK-PHP/actions/workflows/main.yml/badge.svg)
+![Known Vulnerabilities](https://snyk.io/test/github/XRPL-Labs/XUMM-SDK-PHP/badge.svg)
+
 # Xumm SDK (PHP)
 
 ## Requirements
