@@ -19,7 +19,7 @@ For now, use composer to require a [VCS repository](https://getcomposer.org/doc/
         }
     ],
     "require": {
-        "xrpl/xumm-sdk-php": "dev-main"
+        "xrpl-labs/xumm-sdk-php": "dev-main"
     }
 }
 ```
