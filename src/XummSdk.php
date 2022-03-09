@@ -172,7 +172,7 @@ final class XummSdk
             [new JsonEncoder()]
         );
 
-        Dotenv::createImmutable(dirname(dirname(__FILE__)))->load();
+        Dotenv::createImmutable(dirname(dirname(__FILE__)))->safeLoad();
 
         $baseUri = $_SERVER['MODE'] === 'test' ? $_SERVER['XUMM_TEST_BASE_URI'] : self::XUMM_BASE_URI;
 
