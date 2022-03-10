@@ -14,6 +14,8 @@
             "email": "info@pauline-vos.nl"
         }
     ],
+    "keywords": ["xrp","ripple","xrpl","xumm"],
+    "homepage": "https://xumm.readme.io/",
     "license": "MIT",
     "prefer-stable": true,
     "require": {
