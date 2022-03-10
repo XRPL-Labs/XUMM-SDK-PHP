@@ -15,7 +15,7 @@ For now, use composer to require a [VCS repository](https://getcomposer.org/doc/
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/paulinevos/xumm-sdk-php"
+            "url": "https://github.com/XRPL-Labs/XUMM-SDK-PHP"
         }
     ],
     "require": {
@@ -24,7 +24,7 @@ For now, use composer to require a [VCS repository](https://getcomposer.org/doc/
 }
 ```
 
-Once this SDK moves out of beta testing, you'll be able to run `composer require xrpl/xumm-sdk-php` as normal.
+The XUMM SDK is also available [through Packagist](https://packagist.org/packages/xrpl/xumm-sdk-php). Require using `composer require xrpl/xumm-sdk-php`.
 
 ## Usage
 First obtain Xumm API credentials by [registering your app](https://xumm.readme.io/docs/register-your-app).
