@@ -8,23 +8,11 @@
 - [Docker](https://docs.docker.com/get-docker/) and [docker compose](https://docs.docker.com/compose/install/) if you want to run acceptance tests
 
 ## Installation
-For now, use composer to require a [VCS repository](https://getcomposer.org/doc/05-repositories.md#vcs), by adding a
-`repositories` section in your `composer.json`:
-```json
-{
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/XRPL-Labs/XUMM-SDK-PHP"
-        }
-    ],
-    "require": {
-        "xrpl/xumm-sdk-php": "dev-main"
-    }
-}
-```
+This SDK is still in **beta**. To install, require `dev-main` for now:
 
-The XUMM SDK is also available [through Packagist](https://packagist.org/packages/xrpl/xumm-sdk-php). Require using `composer require xrpl/xumm-sdk-php`.
+```
+composer require xrpl/xumm-sdk-php:dev-main
+```
 
 ## Usage
 First obtain Xumm API credentials by [registering your app](https://xumm.readme.io/docs/register-your-app).
