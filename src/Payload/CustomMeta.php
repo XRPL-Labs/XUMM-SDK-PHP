@@ -7,7 +7,7 @@ final class CustomMeta
     public function __construct(
         public readonly ?string $identifier,
         public readonly ?string $instruction,
-        public readonly array $blob = [],
+        public readonly ?array $blob = [],
     ) {
     }
 }
