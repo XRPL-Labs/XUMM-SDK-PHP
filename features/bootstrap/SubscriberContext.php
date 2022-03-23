@@ -6,6 +6,7 @@ use Monolog\Handler\TestHandler;
 use Monolog\Logger;
 use WyriHaximus\AsyncTestUtilities\AsyncTestCase;
 use Xrpl\XummSdkPhp\Response\CreatePayload\CreatedPayload;
+use Xrpl\XummSdkPhp\Response\CreatePayload\Next;
 use Xrpl\XummSdkPhp\Response\CreatePayload\Refs;
 use Xrpl\XummSdkPhp\Subscription\CallbackParams;
 use Xrpl\XummSdkPhp\Subscription\PayloadSubscriber;
@@ -45,6 +46,7 @@ final class SubscriberContext extends AsyncTestCase implements Context
     {
         $this->payload = new CreatedPayload(
         self::PAYLOAD_UUID,
+            new Next('http://example.org/sign'),
             new Refs(
                 'qr.png',
                 '{}',

@@ -46,3 +46,7 @@ Xrpl\XummSdkPhp\Response\GetPayload\XummPayload:
   attributes:
     payloadMeta:
       serialized_name: meta
+  Xrpl\XummSdkPhp\Response\CreatePayload\Next:
+    attributes:
+      noPushMessageReceived:
+        serialized_name: no_push_msg_received
