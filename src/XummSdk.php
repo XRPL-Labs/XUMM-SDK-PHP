@@ -174,12 +174,13 @@ final class XummSdk
 
         Dotenv::createImmutable(dirname(dirname(__FILE__)))->safeLoad();
 
-        $baseUri = $_SERVER['MODE'] === 'test' ? $_SERVER['XUMM_TEST_BASE_URI'] : self::XUMM_BASE_URI;
+        $mode = $_SERVER['MODE'] ?? 'prod';
+        $baseUri = $mode === 'test' ? $_SERVER['XUMM_TEST_BASE_URI'] : self::XUMM_BASE_URI;
 
         $this->client = new XummClient(
             Credentials::create(
                 $apiKey ?? $_SERVER['XUMM_API_KEY'] ?? null,
-                $apiSecret ?? $_SERVER['XUMM_API_SECRET' ?? null],
+                $apiSecret ?? $_SERVER['XUMM_API_SECRET'] ?? null,
             ),
             $this->serializer,
             new Client(['base_uri' => $baseUri]),
