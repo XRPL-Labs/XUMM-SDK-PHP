@@ -69,7 +69,7 @@ final class PayloadSubscriber
         if ($callback && !isset($data['devapp_fetched'])) {
             try {
                 $result = $callback($params);
-                if ($result) {
+                if ($result !== null) {
                     $deferred->resolve($result);
                 }
             } catch (\Throwable $e) {
