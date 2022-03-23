@@ -23,6 +23,7 @@ Initialize the Xumm SDK in your application:
 $sdk = new XummSdk($apiKey, $apiSecret);
 
 // Or set them as environment variables. See .env.example for the expected variable names.
+// Note: the .env file is mostly applicable when contributing to the SDK itself.  
 $sdk = XummSdk();
 ```
 
