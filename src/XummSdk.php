@@ -31,11 +31,7 @@ use Xrpl\XummSdkPhp\Response\GetPayload\XummPayload;
 use Xrpl\XummSdkPhp\Response\Pong\Pong;
 use Xrpl\XummSdkPhp\Response\Rates\Rates;
 use Xrpl\XummSdkPhp\Response\Transaction\XrplTransaction;
-use Xrpl\XummSdkPhp\Serializer\Normalizer\DeletePayloadDenormalizer;
-use Xrpl\XummSdkPhp\Serializer\Normalizer\GetRatesResponseDenormalizer;
-use Xrpl\XummSdkPhp\Serializer\Normalizer\GetTransactionResponseDenormalizer;
-use Xrpl\XummSdkPhp\Serializer\Normalizer\BackedEnumDenormalizer;
-use Xrpl\XummSdkPhp\Serializer\Normalizer\PingResponseDenormalizer;
+use Xrpl\XummSdkPhp\Serializer\XummSerializer;
 use Xrpl\XummSdkPhp\Subscription\PayloadSubscriber;
 use Xrpl\XummSdkPhp\Subscription\Subscription;
 use Xrpl\XummSdkPhp\ValueObject\Credentials;
@@ -53,6 +49,7 @@ final class XummSdk
 
     public function __construct(string $apiKey = null, string $apiSecret = null)
     {
+        $this->serializer = new XummSerializer();
         $this->configure($apiKey, $apiSecret);
     }
 
@@ -147,31 +144,6 @@ final class XummSdk
 
     private function configure(?string $apiKey, ?string $apiSecret): void
     {
-        // Initialize serializer for deserializing responses into view models.
-        $classMetadataFactory = new ClassMetadataFactory(
-            new YamlFileLoader(dirname(dirname(__FILE__)) . '/config/serializer/class_metadata.yaml')
-        );
-        $metadataAwareNameConverter = new MetadataAwareNameConverter(
-            $classMetadataFactory,
-            new CamelCaseToSnakeCaseNameConverter(),
-        );
-        $objNormalizer = new ObjectNormalizer(
-            classMetadataFactory: $classMetadataFactory,
-            nameConverter: $metadataAwareNameConverter,
-            defaultContext: [AbstractObjectNormalizer::SKIP_NULL_VALUES => true],
-        );
-        $this->serializer = new Serializer(
-            [
-                new GetRatesResponseDenormalizer($objNormalizer),
-                new DeletePayloadDenormalizer($objNormalizer),
-                new GetTransactionResponseDenormalizer($objNormalizer),
-                new BackedEnumDenormalizer(),
-                new PingResponseDenormalizer($objNormalizer),
-                $objNormalizer
-            ],
-            [new JsonEncoder()]
-        );
-
         Dotenv::createImmutable(dirname(dirname(__FILE__)))->safeLoad();
 
         $mode = $_SERVER['MODE'] ?? 'prod';
