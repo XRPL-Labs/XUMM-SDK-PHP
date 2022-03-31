@@ -8,6 +8,7 @@ use Symfony\Component\Serializer\Mapping\Loader\YamlFileLoader;
 use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
 use Symfony\Component\Serializer\NameConverter\MetadataAwareNameConverter;
 use Symfony\Component\Serializer\Normalizer\AbstractObjectNormalizer;
+use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -42,6 +43,7 @@ final class XummSerializer implements SerializerInterface
                 new GetTransactionResponseDenormalizer($objNormalizer),
                 new BackedEnumDenormalizer(),
                 new PingResponseDenormalizer($objNormalizer),
+                new DateTimeNormalizer(),
                 $objNormalizer
             ],
             [new JsonEncoder()]

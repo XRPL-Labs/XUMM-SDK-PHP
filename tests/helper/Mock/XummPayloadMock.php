@@ -17,13 +17,10 @@ final class XummPayloadMock
             new Payload(
                 'SignIn',
                 'me',
-
-                null,
                 [],
-                null, null,
                 new DateTimeImmutable(),
                 new DateTimeImmutable(),
-                300
+                300,
             ),
             new PayloadMeta(
                 $uuid,
