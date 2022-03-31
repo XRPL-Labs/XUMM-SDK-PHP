@@ -50,7 +50,8 @@ final class SubscriberContext extends AsyncTestCase implements Context
             new Refs(
                 'qr.png',
                 '{}',
-                'ws://localhost:8081'
+                'ws://localhost:8081',
+                ['m', 'q']
             ),
             false,
         );
