@@ -11,7 +11,7 @@ final class XummPayload implements XummResponse
         public readonly Payload $payload,
         public readonly PayloadMeta $payloadMeta,
         public readonly Application $application,
-        public readonly Response $response,
+        public readonly ?Response $response = null,
         public readonly ?CustomMeta $customMeta = null,
     ) {
     }

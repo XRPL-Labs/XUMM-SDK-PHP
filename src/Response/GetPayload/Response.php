@@ -7,7 +7,7 @@ use DateTimeImmutable;
 final class Response
 {
     public function __construct(
-        public readonly ?string $txid,
+        public readonly ?string $txid = null,
         public readonly ?DateTimeImmutable $resolvedAt = null,
         public readonly ?string $dispatchedNodeType = null,
         public readonly ?string $dispatchedTo = null,

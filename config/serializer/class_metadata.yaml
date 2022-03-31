@@ -46,7 +46,11 @@ Xrpl\XummSdkPhp\Response\GetPayload\XummPayload:
   attributes:
     payloadMeta:
       serialized_name: meta
-  Xrpl\XummSdkPhp\Response\CreatePayload\Next:
-    attributes:
-      noPushMessageReceived:
-        serialized_name: no_push_msg_received
+Xrpl\XummSdkPhp\Response\CreatePayload\Next:
+  attributes:
+    noPushMessageReceived:
+      serialized_name: no_push_msg_received
+Xrpl\XummSdkPhp\Response\CreatePayload\Refs:
+  attributes:
+    qrUriQualityOptions:
+      serialized_name: qr_uri_quality_opts
