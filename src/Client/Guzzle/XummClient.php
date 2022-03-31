@@ -65,6 +65,7 @@ final class XummClient implements XummClientInterface
         }
 
         $options = $this->buildOptions($jsonBody);
+
         return $this->client->requestAsync(
             $method->name,
             Uri::build($request->getEndPoint(), $uriParams)->uri,

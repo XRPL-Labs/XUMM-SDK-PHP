@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   mock-api:
-    image: synon/xumm-mock-api
+    image: synon/xumm-mock-api:1.1
     container_name: xumm-mock-api
     ports:
       - '8080:3000'

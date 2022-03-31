@@ -88,8 +88,6 @@ final class SubscriberContext extends AsyncTestCase implements Context
     public function callBackHasReturned(): void
     {
         $this->callbackResult = $this->await($this->subscription->resolved());
-        var_dump($this->callbackResult);
-//        $this->assertEquals($this->callbackResult, self::CALLBACK_MSG);
     }
 
     /**

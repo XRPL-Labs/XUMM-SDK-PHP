@@ -12,6 +12,8 @@ use Xrpl\XummSdkPhp\Response\Rates\Rates;
 use Xrpl\XummSdkPhp\Response\Transaction\XrplTransaction;
 use Xrpl\XummSdkPhp\Response\Pong\Pong;
 use Throwable;
+use Xrpl\XummSdkPhp\Response\VerifyUserTokens\UserTokenValidityRecord;
+use Xrpl\XummSdkPhp\Response\VerifyUserTokens\UserTokenValidityRecordList;
 
 // phpcs:disable
 enum Request
@@ -26,6 +28,8 @@ enum Request
     case getKycStatusByUserToken;
     case getTransaction;
     case ping;
+    case verifyUserToken;
+    case verifyUserTokens;
 
     // phpcs:disable
     public function getEndPoint(): string
@@ -42,7 +46,8 @@ enum Request
                 'getTransaction' => 'xrpl-tx/:txid',
                 'getRates' => 'rates/:currency',
                 'ping' => 'ping',
-
+                'verifyUserToken' => 'user-token/:token',
+                'verifyUserTokens' => 'user-tokens',
             };
         } catch (Throwable $e) {
             throw RequestMappingException::forEndpoint($this);
@@ -64,6 +69,8 @@ enum Request
                 'getTransaction' => XrplTransaction::class,
                 'getRates' => Rates::class,
                 'ping' => Pong::class,
+                'verifyUserToken' => UserTokenValidityRecord::class,
+                'verifyUserTokens' => UserTokenValidityRecordList::class,
             };
         } catch (Throwable $e) {
             throw RequestMappingException::forEndpoint($this);
