@@ -6,16 +6,6 @@ use Dotenv\Dotenv;
 use GuzzleHttp\Client;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
-use Ratchet\Client\Connector;
-use React\EventLoop\Loop;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
-use Symfony\Component\Serializer\Mapping\Loader\YamlFileLoader;
-use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
-use Symfony\Component\Serializer\NameConverter\MetadataAwareNameConverter;
-use Symfony\Component\Serializer\Normalizer\AbstractObjectNormalizer;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\SerializerInterface;
 use Xrpl\XummSdkPhp\Client\Guzzle\XummClient;
 use Xrpl\XummSdkPhp\Client\XummClient as XummClientInterface;
@@ -31,6 +21,7 @@ use Xrpl\XummSdkPhp\Response\GetPayload\XummPayload;
 use Xrpl\XummSdkPhp\Response\Pong\Pong;
 use Xrpl\XummSdkPhp\Response\Rates\Rates;
 use Xrpl\XummSdkPhp\Response\Transaction\XrplTransaction;
+use Xrpl\XummSdkPhp\Response\VerifyUserTokens\UserTokenValidityRecordList;
 use Xrpl\XummSdkPhp\Serializer\XummSerializer;
 use Xrpl\XummSdkPhp\Subscription\PayloadSubscriber;
 use Xrpl\XummSdkPhp\Subscription\Subscription;
@@ -84,6 +75,22 @@ final class XummSdk
     {
         $body = json_encode(['user_token' => $userToken]);
         return $this->client->post(Request::getKycStatusByUserToken, $body);
+    }
+
+    public function verifyUserTokens(string ...$userTokens): UserTokenValidityRecordList & XummResponse
+    {
+        $body = json_encode(['tokens' => $userTokens]);
+        return $this->client->post(Request::verifyUserTokens, $body);
+    }
+
+    public function verifyUserToken(string $token): ?XummResponse
+    {
+        try {
+            return $this->client->get(Request::verifyUserToken, new UriParams(['token' => $token]));
+        } catch (\Exception $e) {
+            echo $e->getMessage();
+        }
+        return null;
     }
 
     /**

@@ -17,6 +17,7 @@ use Xrpl\XummSdkPhp\Serializer\Normalizer\DeletePayloadDenormalizer;
 use Xrpl\XummSdkPhp\Serializer\Normalizer\GetRatesResponseDenormalizer;
 use Xrpl\XummSdkPhp\Serializer\Normalizer\GetTransactionResponseDenormalizer;
 use Xrpl\XummSdkPhp\Serializer\Normalizer\PingResponseDenormalizer;
+use Xrpl\XummSdkPhp\Serializer\Normalizer\VerifyTokenNormalizer;
 
 final class XummSerializer implements SerializerInterface
 {
@@ -44,6 +45,7 @@ final class XummSerializer implements SerializerInterface
                 new BackedEnumDenormalizer(),
                 new PingResponseDenormalizer($objNormalizer),
                 new DateTimeNormalizer(),
+                new VerifyTokenNormalizer($objNormalizer),
                 $objNormalizer
             ],
             [new JsonEncoder()]

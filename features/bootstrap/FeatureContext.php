@@ -16,6 +16,8 @@ use Xrpl\XummSdkPhp\Response\GetKycStatus\KycStatus;
 use Xrpl\XummSdkPhp\Response\GetPayload\XummPayload;
 use Xrpl\XummSdkPhp\Response\Rates\Rates;
 use Xrpl\XummSdkPhp\Response\Transaction\XrplTransaction;
+use Xrpl\XummSdkPhp\Response\VerifyUserTokens\UserTokenValidityRecord;
+use Xrpl\XummSdkPhp\Response\VerifyUserTokens\UserTokenValidityRecordList;
 use Xrpl\XummSdkPhp\XummSdk;
 use Xrpl\XummSdkPhp\Response\XummResponse;
 use \PHPUnit\Framework as Assert;
@@ -110,6 +112,34 @@ final class FeatureContext implements Context
     }
 
     /**
+     * @When I verify token :token
+     */
+    public function verifyToken(string $token): void
+    {
+        $this->result = $this->sdk->verifyUserToken($token);
+    }
+
+    /**
+     * @When I verify tokens :tokens
+     */
+    public function verifyTokens(string $tokens): void
+    {
+        $tokens = explode(',', $tokens);
+        $this->result = $this->sdk->verifyUserTokens(...$tokens);
+    }
+
+    /**
+     * @Then it will have :count token records
+     */
+    public function willHaveTokenRecords(int $count): void
+    {
+        if (!$this->result instanceof UserTokenValidityRecordList) {
+            throw new Exception('This step assumes a token validity record list was received.');
+        }
+        Assert\assertCount($count, $this->result->tokens);
+    }
+
+    /**
      * @When /I create a payload with body:/
      */
     public function createPayload(TableNode $tableNode): void
@@ -129,7 +159,7 @@ final class FeatureContext implements Context
     /**
      * @Then I will receive :object
      */
-    public function theyWillReceive(string $object)
+    public function theyWillReceive(string $object): void
     {
         Assert\assertNull($this->exception);
 
@@ -138,12 +168,22 @@ final class FeatureContext implements Context
             'a KYC status' => KycStatus::class,
             'a payload' => XummPayload::class,
             'an xlrp transaction' => XrplTransaction::class,
+            'a token validity record' => UserTokenValidityRecord::class,
+            'a token validity record list' => UserTokenValidityRecordList::class,
             'curated assets' => CuratedAssets::class,
             'pong' => Pong::class,
             'rates' => Rates::class,
         };
 
         Assert\assertInstanceOf($expectedResult, $this->result);
+    }
+
+    /**
+     * @Then the result will be null
+     */
+    public function theResultWillBeNull(): void
+    {
+        Assert\assertNull($this->result);
     }
 
     /**
