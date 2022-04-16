@@ -8,6 +8,7 @@ final class Response
 {
     public function __construct(
         public readonly ?string $txid = null,
+        public readonly ?string $hex = null,
         public readonly ?DateTimeImmutable $resolvedAt = null,
         public readonly ?string $dispatchedNodeType = null,
         public readonly ?string $dispatchedTo = null,
