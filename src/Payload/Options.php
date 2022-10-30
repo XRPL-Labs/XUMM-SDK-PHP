@@ -11,6 +11,7 @@ final class Options
         public readonly ?bool $immutable = null,
         public readonly ?bool $forceAccount = null,
         public readonly ?ReturnUrl $returnUrl = null,
+        public readonly ?array $signers = null,
     ) {
     }
 }
