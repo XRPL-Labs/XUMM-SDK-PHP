@@ -1,4 +1,5 @@
 <?php
+declare (strict_types=1);
 
 namespace Xrpl\XummSdkPhp\Payload;
 
@@ -13,5 +14,10 @@ final class Options
         public readonly ?ReturnUrl $returnUrl = null,
         public readonly ?array $signers = null,
     ) {
+        if($signers) $this->typeArrayNullString(...$signers);
+    }
+
+    private function typeArrayNullString(?string ...$args): void
+    {
     }
 }
