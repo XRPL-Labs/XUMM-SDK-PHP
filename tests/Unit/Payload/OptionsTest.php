@@ -3,7 +3,7 @@
 namespace Xrpl\XummSdkPhp\Tests\Unit\Payload;
 
 use PHPUnit\Framework\TestCase;
-use TypeError;
+use Xrpl\XummSdkPhp\Exception\Payload\InvalidArgumentException;
 use Xrpl\XummSdkPhp\Payload\Options;
 
 class OptionsTest extends TestCase
@@ -23,7 +23,7 @@ class OptionsTest extends TestCase
      */
     public function optionsCanHaveOnlyStringSigners(): void
     {
-        $this->expectException(TypeError::class);
+        $this->expectException(InvalidArgumentException::class);
 
         new Options(signers: [true, 2, 3, 4, 5]);
     }
