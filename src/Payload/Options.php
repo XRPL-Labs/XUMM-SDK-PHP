@@ -10,6 +10,7 @@ final class Options
 {
     /**
      * @throws InvalidArgumentException
+     * @param array<string>|null $signers
      */
     public function __construct(
         public readonly ?bool $submit = null,
@@ -17,6 +18,7 @@ final class Options
         public readonly ?int $expire = null,
         public readonly ?bool $immutable = null,
         public readonly ?bool $forceAccount = null,
+        public readonly ?array $signers = null,
         public readonly ?ReturnUrl $returnUrl = null,
         public readonly ?array $signers = null,
     ) {
