@@ -2,7 +2,7 @@
 
 namespace Xrpl\XummSdkPhp\Response\GetKycStatus;
 
-enum KycStatusEnum:string
+enum KycStatusEnum: string
 {
     case NONE = 'NONE';
     case IN_PROGRESS = 'IN_PROGRESS';

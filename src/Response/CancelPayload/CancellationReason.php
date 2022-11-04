@@ -2,7 +2,7 @@
 
 namespace Xrpl\XummSdkPhp\Response\CancelPayload;
 
-enum CancellationReason:string
+enum CancellationReason: string
 {
     case OK = 'OK';
     case ALREADY_CANCELLED = 'ALREADY_CANCELLED';
