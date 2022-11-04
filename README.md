@@ -70,20 +70,5 @@ The subscription ends by either:
 The SDK also supports the XUMM API's helper methods, such as `ping`, `getCuratedAssets`, and `getRates`. Again, these
 will all return corresponding implementations of `XummResponse`.
 
-## Running tests
-Note: unless you're contributing to the SDK project itself, there will be no reason to run the tests. 
-
-To run all test suites:
-`make test`
-
-To run a specific test suite (e.g. unit, acceptance):
-```angular2html
-make test-{suite}
-
-// e.g.: make test-unit
-```
-
-| ***Note:** The acceptance test suite can be run against the 
-[XUMM mock API](https://github.com/paulinevos/xumm-mock-api). If you have Docker and docker compose, running `make test`
-will spin it up for you. Otherwise, you're free to run it yourself using node. Be sure to change the 
-`XUMM_TEST_BASE_URI` environment variable accordingly.*
+## Contributing
+For contributing to development of this package, refer to [CONTRIBUTING.md](CONTRIBUTING.md).
