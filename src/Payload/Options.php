@@ -21,8 +21,10 @@ final class Options
         public readonly ?ReturnUrl $returnUrl = null,
         public readonly ?array $signers = null,
     ) {
-        foreach ($this->signers as $key => $signer) {
-            $this->validate($signer, $key);
+        if (!is_null($this->signers)) {
+            foreach ($this->signers as $key => $signer) {
+                $this->validate($signer, $key);
+            }
         }
     }
 
