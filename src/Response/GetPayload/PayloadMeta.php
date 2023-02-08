@@ -23,6 +23,7 @@ final class PayloadMeta
         public readonly ?bool $immutable = null,
         public readonly ?string $returnUrlApp = null,
         public readonly ?string $returnUrlWeb = null,
+        public readonly ?bool $pathfinding = null,
     ) {
     }
 }
