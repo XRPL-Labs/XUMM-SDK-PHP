@@ -35,6 +35,7 @@ final class XummPayloadMock
                 true,
                 true,
                 false,
+                false,
             ),
             new Application(
                 'cool app',
