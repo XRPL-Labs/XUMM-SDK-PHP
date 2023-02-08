@@ -93,6 +93,8 @@ final class FeatureContext implements Context
             isset($data['immutable']) ? (bool)$data['immutable'] : null,
             isset($data['forceAccount']) ? (bool)$data['forceAccount'] : null,
             $data['returnUrl'] ? new ReturnUrl(null, $data['returnUrl']) : null,
+            $data['signers'] ? json_decode($data['signers'], true) : null,
+            isset($data['pathfinding']) ? (bool)$data['pathfinding'] : null,
         );
     }
 
