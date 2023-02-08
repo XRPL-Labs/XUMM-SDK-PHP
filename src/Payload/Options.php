@@ -20,6 +20,7 @@ final class Options
         public readonly ?bool $forceAccount = null,
         public readonly ?ReturnUrl $returnUrl = null,
         public readonly ?array $signers = null,
+        public readonly ?bool $pathfinding = null,
     ) {
         if (!is_null($this->signers)) {
             foreach ($this->signers as $key => $signer) {
