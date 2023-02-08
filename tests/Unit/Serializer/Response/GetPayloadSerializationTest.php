@@ -37,7 +37,8 @@ final class GetPayloadSerializationTest extends TestCase
     "opened_by_deeplink": null,
     "return_url_app": null,
     "return_url_web": null,
-    "is_xapp": false
+    "is_xapp": false,
+    "pathfinding": false
   },
   "application": {
     "name": "Xumm PHP SDK test",
@@ -103,6 +104,7 @@ JS;
                 expired: false,
                 pushed: false,
                 isXapp: false,
+                pathfinding: false
             ),
             application: new Application(
                 name: 'Xumm PHP SDK test',

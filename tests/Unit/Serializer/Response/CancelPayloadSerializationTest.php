@@ -36,7 +36,8 @@ final class CancelPayloadSerializationTest
     "opened_by_deeplink": null,
     "return_url_app": null,
     "return_url_web": null,
-    "is_xapp": false
+    "is_xapp": false,
+    "pathfinding": false
   },
   "custom_meta": {
     "identifier": null,
