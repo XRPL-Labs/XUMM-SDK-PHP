@@ -52,5 +52,5 @@ The acceptance test suite runs against the
 [XUMM mock API](https://github.com/paulinevos/xumm-mock-api). If you have Docker and docker compose, running `make test`
 will spin it up for you. Otherwise, you're free to run it yourself using node. 
 
-Before running the acceptance test suite, `source .env.testing` to set the necessary environment variables.
+Before running the acceptance test suite, `source setenv.sh` to set the necessary environment variables.
 
