@@ -96,7 +96,7 @@ final class FeatureContext implements Context
             isset($data['signers']) ? explode(',', $data['signers']) : null,
             isset($data['pathfinding']) ? (bool)$data['pathfinding'] : null,
             isset($data['pathfindingFallback']) ? (bool)$data['pathfindingFallback'] : null,
-            isset($data['forceNetwork']) ? $data['forceNetwork'] : null,
+            $data['forceNetwork'] ?? null,
         );
     }
 
