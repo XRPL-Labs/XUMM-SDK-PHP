@@ -19,12 +19,14 @@ final class PayloadMeta
         public readonly bool $pushed,
         public readonly bool $appOpened,
         public readonly bool $isXapp,
+        public readonly bool $pathfinding,
+        public readonly bool $pathfindingFallback,
         public readonly ?bool $openedByDeeplink = null,
         public readonly ?bool $immutable = null,
         public readonly ?string $returnUrlApp = null,
         public readonly ?string $returnUrlWeb = null,
-        public readonly ?bool $pathfinding = null,
         public readonly ?array $signers = null,
+        public readonly ?string $forceNetwork = null,
     ) {
     }
 }

@@ -21,6 +21,8 @@ final class Options
         public readonly ?ReturnUrl $returnUrl = null,
         public readonly ?array $signers = null,
         public readonly ?bool $pathfinding = null,
+        public readonly ?bool $pathfindingFallback = null,
+        public readonly ?string $forceNetwork = null,
     ) {
         if (!is_null($this->signers)) {
             foreach ($this->signers as $key => $signer) {
