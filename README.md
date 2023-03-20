@@ -8,7 +8,7 @@
 - [Docker](https://docs.docker.com/get-docker/) and [docker compose](https://docs.docker.com/compose/install/) if you want to run acceptance tests
 
 ## Installation
-This SDK is still in **beta**. To install, run:
+To install, run:
 
 ```
 composer require xrpl/xumm-sdk-php
