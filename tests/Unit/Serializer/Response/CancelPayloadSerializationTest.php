@@ -37,7 +37,9 @@ final class CancelPayloadSerializationTest
     "return_url_app": null,
     "return_url_web": null,
     "is_xapp": false,
-    "pathfinding": false
+    "pathfinding": false,
+    "pathfinding_fallback": false,
+    "force_network": null
   },
   "custom_meta": {
     "identifier": null,
