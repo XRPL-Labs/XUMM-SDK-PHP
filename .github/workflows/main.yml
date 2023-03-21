@@ -19,7 +19,7 @@ jobs:
 
     services:
       mock-api:
-        image: synon/xumm-mock-api:1.1
+        image: synon/xumm-mock-api:1.2
         ports:
           - '8080:3000'
       mock-ws:
