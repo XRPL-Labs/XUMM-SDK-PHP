@@ -24,6 +24,7 @@ final class PayloadMeta
         public readonly ?string $returnUrlApp = null,
         public readonly ?string $returnUrlWeb = null,
         public readonly ?bool $pathfinding = null,
+        public readonly ?array $signers = null,
     ) {
     }
 }
