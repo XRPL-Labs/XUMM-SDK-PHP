@@ -3,7 +3,7 @@
 # Xumm SDK (PHP)
 
 ## Requirements
-- PHP 8.1 or higher
+- PHP 8.2 or higher
 - [Composer](https://getcomposer.org/)
 - [Docker](https://docs.docker.com/get-docker/) and [docker compose](https://docs.docker.com/compose/install/) if you want to run acceptance tests
 
