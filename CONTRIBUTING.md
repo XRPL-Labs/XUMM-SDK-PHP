@@ -17,7 +17,7 @@ environment:
 
 ### Dev environment setup
 1. Ensure you have installed the following requirements: 
-- PHP 8.1 or higher
+- PHP 8.2 or higher
 - [Composer](https://getcomposer.org/)
 - [Docker](https://docs.docker.com/get-docker/) and [docker compose](https://docs.docker.com/compose/install/)
 2. In the root of the project, run `composer install` to install dependencies.
@@ -25,7 +25,7 @@ environment:
 4. Run all tests (see below) before you create your PR. Merging will be blocked until they pass.
 
 ### Coding guidelines
-This package uses PHP 8.1 and strives to use PHP>=8.1 features. Where possible, use strict
+This package uses PHP 8.2 and strives to use PHP>=8.2 features. Where possible, use strict
 argument and return types, and consider using features like enum types where appropriate.
 
 While coding, keep in mind the user of this package. Users interact with the Xumm API through
