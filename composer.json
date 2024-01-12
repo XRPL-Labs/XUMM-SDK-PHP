@@ -1,5 +1,5 @@
 {
-    "name": "xrpl/xumm-sdk-php",
+    "name": "xrplwin/xumm-sdk-php",
     "description": "A PHP SDK for Xumm by XRPLabs.",
     "type": "library",
     "autoload": {
