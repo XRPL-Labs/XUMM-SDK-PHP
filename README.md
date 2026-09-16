@@ -24,7 +24,7 @@ $sdk = new XummSdk($apiKey, $apiSecret);
 
 // Or set them as environment variables. See .env.example for the expected variable names.
 // Note: the .env file is mostly applicable when contributing to the SDK itself.  
-$sdk = XummSdk();
+$sdk = new XummSdk();
 ```
 
 Each call on the SDK object will return a corresponding value object implementing the `XummResponse` interface.
@@ -55,8 +55,8 @@ After you create a payload, you can pass the returned `CreatedPayload` to `XummS
 payload status changes. This returns an instance of `Xrpl\XummSdkPhp\Subscriber\Subscription`.
 
 Changes to a payload status include:
-- The payload was by a XUMM App user (web page)
-- The payload was by a XUMM App user (in the app)
+- The payload was opened by a XUMM App user (web page)
+- The payload was opened by a XUMM App user (in the app)
 - Payload expiration updates (remaining time in seconds)
 - The payload was resolved by rejecting
 - The payload was resolved by accepting (signing)
